@@ -3,15 +3,20 @@ call plug#begin('~/.vim/plugged')
 
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "
 " File explorer with Icons
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 "Plug 'ryanoasis/vim-devicons'
 
+" Bald guy file explorer plugin
+Plug 'tpope/vim-vinegar'
 " Git inside Vim commands
 Plug 'tpope/vim-fugitive'
+
+" Bald guy with some sugar
+Plug 'tpope/vim-eunuch'
 
 " Git status line
 " Plug 'vim-airline/vim-airline'
@@ -50,12 +55,31 @@ let g:fzf_action = {
 " used to ignore gitignore files
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-" Delete buffer of file you delete from NERDTree
-let NERDTreeAutoDeleteBuffer = 1
+" Uncomment above to use nerdtree =============================
+"let NERDTreeMinimalUI = 1
+"let NERDTreeDirArrows = 1
+"let NERDTreeAutoDeleteBuffer = 1
+"let g:NERDTreeGitStatusWithFlags = 1
+"let g:NERDTreeIgnore = ['^node_modules$']
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+"function! IsNERDTreeOpen()        
+  "return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+"endfunction
 
-let g:NERDTreeGitStatusWithFlags = 1
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+"function! SyncTree()
+  "if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    "NERDTreeFind
+    "wincmd p
+  "endif
+"endfunction
+" Toggle NERDTree with CTRL+n
+"nmap <C-n> :NERDTreeToggle<CR>
+" ========================================================
+
+" Delete buffer of file you delete from NERDTree
 "let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "let g:NERDTreeGitStatusNodeColorization = 1
 "let g:NERDTreeColorMapCustom = {
@@ -70,7 +94,6 @@ let g:NERDTreeGitStatusWithFlags = 1
     "\ }                         
 
 
-let g:NERDTreeIgnore = ['^node_modules$']
 
 let mapleader = " "
 " vim-prettier
@@ -135,20 +158,6 @@ if has("termguicolors")     " set true colors
     set termguicolors
 endif
 
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
 
 
 " coc config
@@ -228,10 +237,10 @@ augroup mygroup
 
 
   " Highlight currently open buffer in NERDTree
-  autocmd BufEnter * call SyncTree()
+  "autocmd BufEnter * call SyncTree()
 
   "" Opens NERDTree on startup
-  au VimEnter * NERDTree
+  "au VimEnter * NERDTree
 
   " Auto-focus second panel
   au VimEnter * wincmd l
@@ -256,8 +265,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Toggle NERDTree with CTRL+n
-nmap <C-n> :NERDTreeToggle<CR>
 
 " To comment stuff
 vmap ++ <plug>NERDCommenterToggle
@@ -276,4 +283,4 @@ inoremap kj <Esc>
 " console log from insert mode
 imap clg console.log()<Esc><S-f>(a
 nmap clg yiwoclg<Esc>a
-
+let g:netrw_localrmdir='rm -r'
