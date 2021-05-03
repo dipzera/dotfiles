@@ -163,6 +163,7 @@ endif
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-pairs',
+  \ 'coc-vetur',
   \ 'coc-snippets',
   \ 'coc-tsserver',
   \ 'coc-eslint', 
