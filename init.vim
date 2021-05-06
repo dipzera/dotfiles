@@ -40,6 +40,9 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
+" Russian keyboard support
+Plug 'lyokha/vim-xkbswitch'
+
 " Initialize plugin system
 call plug#end()
 
@@ -54,6 +57,8 @@ let g:fzf_action = {
 " requires silversearcher-ag
 " used to ignore gitignore files
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+
+let g:XkbSwitchEnabled = 1 " Dergaem rubilnik i raduemsya (: 
 
 " Uncomment above to use nerdtree =============================
 "let NERDTreeMinimalUI = 1
