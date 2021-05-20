@@ -43,16 +43,22 @@ Plug 'peitalin/vim-jsx-typescript'
 " Russian keyboard support
 Plug 'lyokha/vim-xkbswitch'
 
+" Git lens
+Plug 'APZelos/blamer.nvim'
+
 " Initialize plugin system
 call plug#end()
 
 " fzf bindings
-silent! nmap <C-p> :FZF<CR>
+silent! nmap <C-p> :GFiles<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
+
+" Enable Git lens
+let g:blamer_enabled = 1
 
 " requires silversearcher-ag
 " used to ignore gitignore files
@@ -177,7 +183,9 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-css',
   \ 'coc-html',
-  \ 'coc-rls'
+  \ 'coc-rls',
+  \ 'coc-prisma',
+  \ 'coc-graphql'
   \ ]
 " from readme
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
@@ -249,7 +257,7 @@ augroup mygroup
   "au VimEnter * NERDTree
 
   " Auto-focus second panel
-  au VimEnter * wincmd l
+  " au VimEnter * wincmd l
 augroup end
 
 
@@ -281,7 +289,7 @@ nmap <leader>bg :highlight Normal guibg=NONE<CR>
 " Fugitive bindings
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
-nmap <leader>gs :G<CR>
+nmap <leader>gs :Git<CR>
 
 inoremap jk <Esc>
 inoremap kj <Esc>

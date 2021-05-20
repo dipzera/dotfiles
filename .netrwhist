@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/vgorea/github/server/src/core/ad/application'
+let g:netrw_dirhist_8='/home/vgorea/github/server/src/core/ad'
+let g:netrw_dirhist_7='/home/vgorea/github/server/src/core'
+let g:netrw_dirhist_6='/home/vgorea/github/server/src/core/ad'
+let g:netrw_dirhist_5='/home/vgorea/github/server/src/core'
+let g:netrw_dirhist_4='/home/vgorea/github/server/src/core/ad'
+let g:netrw_dirhist_3='/home/vgorea/github/server/src/core/ad/infrastructure'
+let g:netrw_dirhist_2='/home/vgorea/github/server/src/core/ad'
+let g:netrw_dirhist_1='/home/vgorea/github/server/src/core/ad/domain'
+let g:netrw_dirhist_0='/home/vgorea/github/server/src/core/ad'

@@ -1,6 +1,8 @@
 {
   "suggest.noselect": false,
-  "coc.preferences.formatOnSaveFiletypes": [
+  "prettier.eslintIntegration": true,
+  "prettier.disableLanguages": [""]
+  /* "coc.preferences.formatOnSaveFiletypes": [
     "html",
     "css",
     "javascript",
@@ -13,5 +15,5 @@
     "java",
     "cpp",
     "yaml"
-  ]
+  ] */
 }
