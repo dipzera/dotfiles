@@ -153,3 +153,5 @@ alias ala="nvim /mnt/c/users/vladg/AppData/Roaming/alacritty/alacritty.yml"
 
 # scripts
 # alias zet="$SCRIPTS/zet"
+#
+# set -o vi
