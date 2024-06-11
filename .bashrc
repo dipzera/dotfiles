@@ -1,4 +1,3 @@
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -128,7 +127,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # runs tmux on start-up
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+  exec tmux new-session -A -s main
 fi
 
 # init zoxide
@@ -139,7 +138,7 @@ export SUPERSET_CONFIG_PATH="$HOME/repos/polyteia/superset/custom/superset_confi
 
 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
 
-PATH="${PATH:+${PATH}:}"$SCRIPTS":/opt/nvim-linux64/bin"
+PATH="${PATH:+${PATH}:}"$SCRIPTS":/opt/nvim-linux64/bin/nvim"
 export PATH="$PATH"
 
 
@@ -150,8 +149,17 @@ alias brainbox="cd $BRAINBOX && nvim ."
 alias bb=brainbox
 alias win="cd /mnt/c/users/vladg"
 alias ala="nvim /mnt/c/users/vladg/AppData/Roaming/alacritty/alacritty.yml"
+alias wez="nvim /mnt/c/users/vladg/.wezterm.lua"
 
 # scripts
 # alias zet="$SCRIPTS/zet"
 #
-# set -o vi
+set -o vi
+source /etc/profile.d/bash_completion.sh
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$GOPATH:$GOPATH/bin:$GOROOT/bin:$PATH
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+. "$HOME/.cargo/env"
