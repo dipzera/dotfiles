@@ -3,5 +3,5 @@
 	url = https://github.com/dipzera/kickstart.nvim
 
 [submodule "scripts"]
-  path = scripts
-  url = https://github.com/dipzera/scripts
+	path = scripts
+	url = https://github.com/dipzera/scripts
