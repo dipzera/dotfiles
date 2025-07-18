@@ -1,6 +1,6 @@
 [submodule "nvim"]
 	path = nvim
-	url = https://github.com/dipzera/kickstart.nvim
+	url = https://github.com/dipzera/lazy
 
 [submodule "scripts"]
 	path = scripts
