@@ -1,4 +1,8 @@
-#!/bin/bash
+# Personal configuration
+
+f() {
+  cd "$(fd --type d | fzf)"
+}
 
 # env variables
 export USER="${USER:-$(whoami)}"
@@ -39,7 +43,7 @@ alias '??'=google
 
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls'
 
 alias dotfiles="cd $DOTFILES"
 alias scripts="cd $SCRIPTS"
@@ -73,7 +77,8 @@ alias fish="asciiquarium"
 alias ci="gitlab-ci-local"
 
 set -o vi
-source /etc/profile.d/bash_completion.sh
+set -o ignoreeof
+# source /etc/profile.d/bash_completion.sh
 
 PATH="${PATH:+${PATH}:}"$SCRIPTS":/opt/nvim-linux64/bin/nvim"
 
@@ -101,7 +106,11 @@ shopt -s checkwinsize
 # fi
 
 # init zoxide
-eval "$(zoxide init bash)"
+# eval "$(zoxide init bash)"
+#
+
+# Omarchy default rc configuration
+source ~/.local/share/omarchy/default/bash/rc
 
 # Substitute BIN for your bin directory.
 # Substitute VERSION for the current released version.
@@ -155,14 +164,14 @@ PROMPT_COMMAND="__ps1"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-export OPENAI_API_KEY=$(<~/.config/gpt/key)
-export SRC_ACCESS_TOKEN=$(<~/.config/sourcegraph/token)
+export OPENAI_API_KEY=$(<~/.config/openai/key)
+# export SRC_ACCESS_TOKEN=$(<~/.config/sourcegraph/token)
 export SRC_ENDPOINT='https://sourcegraph.com/'
 
-export DEEPSEEK_API_KEY=$(<~/.config/deepseek/key)
-alias ai="aider --model deepseek --api-key deepseek=$DEEPSEEK_API_KEY --no-auto-commits --no-dirty-commits"
+# export DEEPSEEK_API_KEY=$(<~/.config/deepseek/key)
+# alias ai="aider --model deepseek --api-key deepseek=$DEEPSEEK_API_KEY --no-auto-commits --no-dirty-commits"
 
 export ANTHROPIC_API_KEY=$(<~/.config/anthropic/key)
 
@@ -197,3 +206,21 @@ export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 #
 # opencode
 export PATH=/home/vladgorea/.opencode/bin:$PATH
+
+# Android SDK
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+
+# pnpm
+export PNPM_HOME="/home/dipzera/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# opencode
+export PATH=/home/dipzera/.opencode/bin:$PATH
